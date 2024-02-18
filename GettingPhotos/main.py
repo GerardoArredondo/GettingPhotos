@@ -6,18 +6,20 @@ from PIL import Image
 import time
 
 #PATH = "/home/gerotota/Udemy/Python/Projects/GettingPhotos/chromedriver.exe"
+url = input()
+urlBuena = str(url)
 
 wd = webdriver.Chrome()
 wd.get("https://www.google.com/")
 
 
-def gettinImages(wd, delay, maxImages):
+def gettinImages(wd, delay, maxImages, url):
     def scroll(wd):
         wd.execute_script("window.scrollTo(0,document.body.scrollHeight);")
         time.sleep(delay)
 
     #url = "https://twitter.com/home"
-    url = "https://www.google.com/search?sca_esv=cd5515df3b07dc25&sxsrf=ACQVn082yViQP3i1TglnfFEU-uThXU7I6Q:1708285442500&q=dogs&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjApuaX07WEAxWcJ0QIHUo0AmYQ0pQJegQIDRAB&biw=1900&bih=897"
+    #url = "https://www.google.com/search?sca_esv=cd5515df3b07dc25&sxsrf=ACQVn082yViQP3i1TglnfFEU-uThXU7I6Q:1708285442500&q=dogs&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjApuaX07WEAxWcJ0QIHUo0AmYQ0pQJegQIDRAB&biw=1900&bih=897"
     wd.get(url)
 
     image_urls = set()
@@ -70,7 +72,8 @@ def downloadImage(download_path, url, file_name):
     except Exception as e:
         print("Algo fallo - ", e)
 
-urls = gettinImages(wd, 1, 5)
+
+urls = gettinImages(wd, 1, 5, urlBuena)
 
 
 for i, url in enumerate(urls):
