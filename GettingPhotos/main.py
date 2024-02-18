@@ -1,1 +1,2 @@
-hola como esta
+PATH = /home/gerotota/Udemy/Python/Projects/GettingPhotos
+
